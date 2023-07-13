@@ -3,7 +3,7 @@
 kotlin = "1.8.10"
 androidGradle = "7.3.0"
 composeRuntime = "1.3.3"
-mdi = "0.0.12"
+mdi = "0.0.13"
 
 [libraries]
 
