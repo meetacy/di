@@ -6,6 +6,7 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
+        google()
     }
 }
 
@@ -17,3 +18,5 @@ dependencyResolutionManagement {
 }
 
 includeBuild("build-logic")
+
+include("android")
