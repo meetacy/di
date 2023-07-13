@@ -2,7 +2,7 @@
 
 kotlin = "1.8.10"
 androidGradle = "7.3.0"
-mdi = "0.0.6"
+mdi = "0.0.7"
 
 [libraries]
 
