@@ -19,6 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
       - name: Gradle Cache Setup
         uses: gradle/gradle-build-action@v2
         with:
@@ -36,6 +41,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
       - name: Gradle Cache Setup
         uses: gradle/gradle-build-action@v2
         with:
@@ -53,6 +63,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
       - name: Gradle Cache Setup
         uses: gradle/gradle-build-action@v2
       - name: Gradle Sync
@@ -68,6 +83,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
       - name: Gradle Cache Setup
         uses: gradle/gradle-build-action@v2
         with:
@@ -85,6 +105,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
       - name: Gradle Cache Setup
         uses: gradle/gradle-build-action@v2
         with:
