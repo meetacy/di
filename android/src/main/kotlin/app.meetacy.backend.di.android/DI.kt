@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "NAME_SHADOWING")
+@file:Suppress("UNUSED_VARIABLE")
 
 package app.meetacy.backend.di.android
 
@@ -13,9 +13,9 @@ lateinit var di: DI private set
 val DI.application: Application by Dependency
 
 public object DI {
-    public fun onCreate(application: Application, builder: DIBuilder.() -> Unit) {
+    public fun Application.build(builder: DIBuilder.() -> Unit) {
         di = di {
-            val application by constant(application)
+            val application by constant(this@build)
             builder()
         }
     }
