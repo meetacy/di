@@ -1,5 +1,5 @@
 plugins {
-    id("print-version-convention")
+    id("kmp-library-convention")
 }
 
 version = libs.versions.mdi.get()

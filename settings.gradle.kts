@@ -19,4 +19,7 @@ dependencyResolutionManagement {
 
 includeBuild("build-logic")
 
-include("android")
+include(
+    "core",
+    "android"
+)
