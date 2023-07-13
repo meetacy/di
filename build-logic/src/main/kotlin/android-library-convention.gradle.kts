@@ -40,4 +40,5 @@ publishing {
 
 kotlin {
     explicitApi()
+    jvmToolchain(8)
 }
