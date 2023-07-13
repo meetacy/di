@@ -26,7 +26,7 @@ jobs:
           release_version=$(./gradlew printVersion -q)
           echo "release_version=$release_version" >> $GITHUB_ENV
       - name: Publish ${{ env.release_version }}
-        run: ./gradlew publishKotlinMultiplatformPublicationToMeetacySdkRepository
+        run: ./gradlew publishKotlinMultiplatformPublicationToGitHubRepository
       - name: Add Sdk Version to Output
         id: output_version
         run: echo "release_version=${{ env.release_version }}" >> $GITHUB_OUTPUT
@@ -44,7 +44,7 @@ jobs:
           release_version=$(./gradlew printVersion -q)
           echo "release_version=$release_version" >> $GITHUB_ENV
       - name: Publish ${{ env.release_version }}
-        run: ./gradlew publishJvmPublicationToMeetacySdkRepository
+        run: ./gradlew publishJvmPublicationToGitHubRepository
 
   deploy-js:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           release_version=$(./gradlew printVersion -q)
           echo "release_version=$release_version" >> $GITHUB_ENV
       - name: Publish ${{ env.release_version }}
-        run: ./gradlew publishJsPublicationToMeetacySdkRepository
+        run: ./gradlew publishJsPublicationToGitHubRepository
 
   deploy-konan:
     runs-on: macos-latest
@@ -80,9 +80,9 @@ jobs:
           echo "release_version=$release_version" >> $GITHUB_ENV
       - name: Publish ${{ env.release_version }}
         run: |
-          ./gradlew publishIosX64PublicationToMeetacySdkRepository \
-                    publishIosSimulatorArm64PublicationToMeetacySdkRepository \
-                    publishIosArm64PublicationToMeetacySdkRepository
+          ./gradlew publishIosX64PublicationToGitHubRepository \
+                    publishIosSimulatorArm64PublicationToGitHubRepository \
+                    publishIosArm64PublicationToGitHubRepository
 
   create-release:
     runs-on: ubuntu-latest
