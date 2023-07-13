@@ -8,9 +8,7 @@ plugins {
 kotlin {
     explicitApi()
 
-    jvm {
-        jvmToolchain(8)
-    }
+    jvm()
     js(IR) {
         browser()
         nodejs()
