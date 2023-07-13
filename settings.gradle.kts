@@ -21,5 +21,6 @@ includeBuild("build-logic")
 
 include(
     "core",
-    "android"
+    "android",
+    "compose"
 )
