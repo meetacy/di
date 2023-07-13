@@ -1,9 +1,9 @@
-package app.meetacy.backend.di
+package app.meetacy.di
 
-import app.meetacy.backend.di.annotation.DIDsl
-import app.meetacy.backend.di.builder.DIBuilder
-import app.meetacy.backend.di.builder.di
-import app.meetacy.backend.di.dependency.*
+import app.meetacy.di.annotation.DIDsl
+import app.meetacy.di.builder.DIBuilder
+import app.meetacy.di.builder.di
+import app.meetacy.di.dependency.*
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 

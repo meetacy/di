@@ -1,6 +1,6 @@
-package app.meetacy.backend.di.dependency
+package app.meetacy.di.dependency
 
-import app.meetacy.backend.di.DI
+import app.meetacy.di.DI
 
 public fun interface DependencyProvider<out T> {
 

@@ -1,4 +1,4 @@
-package app.meetacy.backend.di.dependency
+package app.meetacy.di.dependency
 
 import kotlin.reflect.KType
 

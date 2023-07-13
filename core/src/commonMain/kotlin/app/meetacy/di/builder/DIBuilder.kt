@@ -1,12 +1,12 @@
-package app.meetacy.backend.di.builder
+package app.meetacy.di.builder
 
-import app.meetacy.backend.di.DI
-import app.meetacy.backend.di.annotation.DIDsl
-import app.meetacy.backend.di.checkDependencies
-import app.meetacy.backend.di.dependency.Dependencies
-import app.meetacy.backend.di.dependency.DependencyKey
-import app.meetacy.backend.di.dependency.DependencyPair
-import app.meetacy.backend.di.dependency.DependencyProvider
+import app.meetacy.di.DI
+import app.meetacy.di.annotation.DIDsl
+import app.meetacy.di.checkDependencies
+import app.meetacy.di.dependency.Dependencies
+import app.meetacy.di.dependency.DependencyKey
+import app.meetacy.di.dependency.DependencyPair
+import app.meetacy.di.dependency.DependencyProvider
 import kotlin.reflect.typeOf
 
 public inline fun di(

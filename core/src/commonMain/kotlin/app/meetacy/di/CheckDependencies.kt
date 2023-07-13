@@ -1,6 +1,6 @@
-package app.meetacy.backend.di
+package app.meetacy.di
 
-import app.meetacy.backend.di.dependency.Dependencies
+import app.meetacy.di.dependency.Dependencies
 
 /**
  * Throws if some dependencies are inaccessible.

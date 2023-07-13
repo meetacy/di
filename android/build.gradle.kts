@@ -5,5 +5,5 @@ plugins {
 version = libs.versions.mdi.get()
 
 dependencies {
-    api(project.rootProject)
+    api(projects.core)
 }

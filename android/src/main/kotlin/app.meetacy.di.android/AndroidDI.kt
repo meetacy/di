@@ -1,12 +1,12 @@
 @file:Suppress("UNUSED_VARIABLE", "NAME_SHADOWING")
 
-package app.meetacy.backend.di.android
+package app.meetacy.di.android
 
 import android.app.Application
-import app.meetacy.backend.di.DI
-import app.meetacy.backend.di.builder.DIBuilder
-import app.meetacy.backend.di.builder.di
-import app.meetacy.backend.di.dependency.Dependency
+import app.meetacy.di.DI
+import app.meetacy.di.builder.DIBuilder
+import app.meetacy.di.builder.di
+import app.meetacy.di.dependency.Dependency
 
 lateinit var di: DI private set
 

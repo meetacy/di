@@ -1,4 +1,4 @@
-package app.meetacy.backend.di.annotation
+package app.meetacy.di.annotation
 
 @DslMarker
 public annotation class DIDsl

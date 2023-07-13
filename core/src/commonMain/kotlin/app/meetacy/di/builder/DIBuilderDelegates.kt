@@ -1,8 +1,8 @@
-package app.meetacy.backend.di.builder
+package app.meetacy.di.builder
 
-import app.meetacy.backend.di.DI
-import app.meetacy.backend.di.dependency.DependencyKey
-import app.meetacy.backend.di.dependency.DependencyProvider
+import app.meetacy.di.DI
+import app.meetacy.di.dependency.DependencyKey
+import app.meetacy.di.dependency.DependencyProvider
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 import kotlin.reflect.KType
