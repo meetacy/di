@@ -12,6 +12,25 @@ android {
         minSdk = 21
         targetSdk = 33
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("android") {
+            groupId = "app.meetacy.di"
+            artifactId = "android"
+            afterEvaluate {
+                version = versionFromProperties()
+                from(components["release"])
+            }
+        }
+    }
 }
 
 kotlin {
