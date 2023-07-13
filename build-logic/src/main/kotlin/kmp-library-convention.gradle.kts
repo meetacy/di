@@ -8,7 +8,7 @@ plugins {
 kotlin {
     explicitApi()
 
-    jvmToolchain(11)
+    jvmToolchain(8)
 
     jvm()
     js(IR) {
