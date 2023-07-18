@@ -65,8 +65,6 @@ public class DI private constructor(
         )
     }
 
-    public infix fun extend(block: DIBuilder.() -> Unit): DI = this + di(checkDependencies = false, block = block)
-
     public operator fun plus(other: DI): DI = DI(
         dependencies = Dependencies(list = dependencies.list + other.dependencies.list),
         trace = DependencyTrace(trace.list + other.trace.list)

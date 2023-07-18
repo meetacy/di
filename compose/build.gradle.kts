@@ -16,4 +16,5 @@ android {
 dependencies {
     api(projects.android)
     implementation(libs.composeRuntime)
+    implementation(libs.lifecycleComposeViewmodel)
 }
