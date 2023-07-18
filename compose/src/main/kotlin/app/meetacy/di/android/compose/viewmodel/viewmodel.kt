@@ -9,12 +9,13 @@ import app.meetacy.di.DI
 import app.meetacy.di.builder.di
 import app.meetacy.di.dependency.Dependency
 import kotlinx.coroutines.CoroutineScope
+import kotlin.reflect.typeOf
 
 val DI.viewModelScope: CoroutineScope by Dependency
 
 @Composable
 inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T) {
-    androidx.lifecycle.viewmodel.compose.viewModel unused@ {
+    androidx.lifecycle.viewmodel.compose.viewModel(key = "${typeOf<T>()}") unused@ {
         val vm = DIViewModel<T>()
 
         val di = this@viewModel + di {
