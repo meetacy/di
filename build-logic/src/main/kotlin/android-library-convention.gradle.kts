@@ -29,7 +29,7 @@ publishing {
     publications {
         register<MavenPublication>("android") {
             groupId = "app.meetacy.di"
-            artifactId = "android"
+            artifactId = project.name
             afterEvaluate {
                 version = versionFromProperties()
                 from(components["release"])
