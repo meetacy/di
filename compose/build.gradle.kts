@@ -5,6 +5,8 @@ plugins {
 version = libs.versions.mdi.get()
 
 android {
+    namespace = "app.meetacy.di.android.compose"
+
     buildFeatures {
         compose = true
     }

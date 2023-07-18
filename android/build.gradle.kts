@@ -4,6 +4,10 @@ plugins {
 
 version = libs.versions.mdi.get()
 
+android {
+    namespace = "app.meetacy.di.android"
+}
+
 dependencies {
     api(projects.core)
 }
