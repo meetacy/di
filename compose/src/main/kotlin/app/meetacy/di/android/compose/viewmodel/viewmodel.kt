@@ -14,9 +14,12 @@ import kotlin.reflect.typeOf
 val DI.viewModelScope: CoroutineScope by Dependency
 
 @Composable
+inline fun <reified T : Any> DI.viewModel(name: String? = null) = viewModel { get<T>(name) }
+
+@Composable
 inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T) {
-    androidx.lifecycle.viewmodel.compose.viewModel(key = "${typeOf<T>()}") unused@ {
-        val vm = DIViewModel<T>()
+    androidx.lifecycle.viewmodel.compose.viewModel<DIViewModel<T>>(key = "${typeOf<T>()}") unused@ {
+        val vm = object : DIViewModel<T>() {}
 
         val di = this@viewModel + di {
             val viewModelScope by constant(vm.viewModelScope)
@@ -29,6 +32,6 @@ inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T) {
 }
 
 @PublishedApi
-internal class DIViewModel<T : Any> : ViewModel() {
+internal open class DIViewModel<T : Any> : ViewModel() {
     lateinit var underlying: T
 }
