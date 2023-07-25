@@ -6,21 +6,28 @@ import android.app.Application
 import app.meetacy.di.DI
 import app.meetacy.di.builder.di
 import app.meetacy.di.dependency.Dependency
-import app.meetacy.di.android.di as globalDi
+import app.meetacy.di.global.GlobalDI
+import app.meetacy.di.global.di
 
-lateinit var di: DI private set
+val di: DI get() {
+    return try {
+        di
+    } catch (_: IllegalStateException) {
+        error("DI is not initialized, call AndroidDI.init(di)")
+    }
+}
 
 val DI.application: Application by Dependency
 
-public object AndroidDI {
-    public fun inject(
+object AndroidDI {
+    fun init(
         application: Application,
         di: DI
     ) {
-        if (::globalDi.isInitialized) error("DI can only be initialized once")
-
-        globalDi = di + di(checkDependencies = false) {
-            val application by constant(application)
-        }
+        GlobalDI.init(
+            di = di + di(checkDependencies = false) {
+                val application by constant(application)
+            }
+        )
     }
 }

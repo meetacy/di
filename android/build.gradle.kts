@@ -10,4 +10,5 @@ android {
 
 dependencies {
     api(projects.core)
+    implementation(projects.global)
 }
