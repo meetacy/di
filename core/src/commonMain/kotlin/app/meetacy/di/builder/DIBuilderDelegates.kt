@@ -66,3 +66,23 @@ public class DIBuilderFactoryDelegate<T>(
         return ReadOnlyProperty { _, _ -> }
     }
 }
+
+public class DIBuilderScopedDelegate<T>(
+    private val di: DIBuilder,
+    private val type: KType,
+    private val builder: ScopedBuilder<T>.() -> Unit
+) {
+    public operator fun provideDelegate(
+        thisRef: Any?,
+        property: KProperty<*>
+    ): ReadOnlyProperty<Any?, Unit> {
+        di.register(
+            key = DependencyKey(
+                type = type,
+                name = property.name
+            ),
+            provider = ScopedBuilder<T>().apply(builder).build()
+        )
+        return ReadOnlyProperty { _, _ -> }
+    }
+}

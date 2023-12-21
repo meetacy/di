@@ -12,14 +12,14 @@ public class WeakDependencyProvider<out T>(
 ) : DependencyProvider<T> {
     private var reference: WeakReference<T>? = null
 
-    override fun createNewInstance(di: DI): T {
+    override fun getInstance(di: DI): T {
         val oldValue = reference?.get()
         if (oldValue != null) return oldValue
         synchronized(this) {
             val value = reference?.get()
             if (value != null) return value
 
-            val newValue = base.createNewInstance(di)
+            val newValue = base.getInstance(di)
             reference = WeakReference(newValue)
             return newValue
         }

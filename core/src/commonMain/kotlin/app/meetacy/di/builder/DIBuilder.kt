@@ -102,6 +102,28 @@ public class DIBuilder(dependencies: Dependencies) {
         )
     }
 
+    public inline fun <reified T> scoped(
+        name: String?,
+        crossinline builder: ScopedBuilder<T>.() -> Unit
+    ) {
+        val key = DependencyKey<T>(
+            type = typeOf<T>(),
+            name = name
+        )
+        val provider = ScopedBuilder<T>().apply(builder).build()
+        register(key, provider)
+    }
+
+    public inline fun <reified T> scoped(
+        noinline builder: ScopedBuilder<T>.() -> Unit
+    ): DIBuilderScopedDelegate<T> {
+        return DIBuilderScopedDelegate(
+            di = this,
+            type = typeOf<T>(),
+            builder = builder
+        )
+    }
+
     public fun build(): DI = DI(
         dependencies = Dependencies(dependencies.toList())
     )

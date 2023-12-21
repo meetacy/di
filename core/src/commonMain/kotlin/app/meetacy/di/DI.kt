@@ -1,8 +1,6 @@
 package app.meetacy.di
 
 import app.meetacy.di.annotation.DIDsl
-import app.meetacy.di.builder.DIBuilder
-import app.meetacy.di.builder.di
 import app.meetacy.di.dependency.*
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
@@ -38,7 +36,7 @@ public class DI private constructor(
         val provider = provider(key)
         val dependency = DependencyPair(key, provider)
         val subDI = subDI(dependency.key)
-        return dependency.provider.createNewInstance(subDI)
+        return dependency.provider.getInstance(subDI)
     }
 
     private fun checkRecursive(dependencyKey: DependencyKey<*>) {
