@@ -11,7 +11,7 @@ import app.meetacy.di.global.GlobalDI
 import app.meetacy.di.global.annotation.GlobalApi
 import app.meetacy.di.global.di
 
-val di: DI get() {
+public val di: DI get() {
     return try {
         di
     } catch (_: IllegalStateException) {
@@ -19,12 +19,12 @@ val di: DI get() {
     }
 }
 
-val DI.application: Application by Dependency
+public val DI.application: Application by Dependency
 
 @AndroidGlobalApi
-object AndroidDI {
+public object AndroidDI {
     @OptIn(GlobalApi::class)
-    fun init(
+    public fun init(
         application: Application,
         di: DI
     ) {

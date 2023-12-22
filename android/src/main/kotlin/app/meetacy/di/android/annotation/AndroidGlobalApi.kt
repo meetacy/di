@@ -8,4 +8,4 @@ package app.meetacy.di.android.annotation
             "another option, but to use a Global singleton",
     level = RequiresOptIn.Level.WARNING
 )
-annotation class AndroidGlobalApi()
+public annotation class AndroidGlobalApi()

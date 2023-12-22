@@ -12,53 +12,53 @@ import app.meetacy.di.factory.factory0
 import kotlinx.coroutines.CoroutineScope
 import kotlin.reflect.typeOf
 
-val DI.viewModelScope: CoroutineScope by Dependency
+public val DI.viewModelScope: CoroutineScope by Dependency
 
 @Composable
-inline fun <reified R : Any> DI.viewModel(name: String? = null) = viewModel { create<R>(name) }
+public inline fun <reified R : Any> DI.viewModel(name: String? = null): R = viewModel { create<R>(name) }
 
 @Composable
-inline fun <reified T1, reified R : Any> DI.viewModel(
+public inline fun <reified T1, reified R : Any> DI.viewModel(
     arg1: T1,
     name: String? = null
 ): R = viewModel { create<T1, R>(arg1, name) }
 
 @Composable
-inline fun <reified T1, reified T2, reified R : Any> DI.viewModel(
+public inline fun <reified T1, reified T2, reified R : Any> DI.viewModel(
     arg1: T1,
     arg2: T2,
     name: String? = null
-): R = viewModel { app.meetacy.di.factory.create<T1, T2, R>(arg1, arg2, name) }
+): R = viewModel { create<T1, T2, R>(arg1, arg2, name) }
 
 @Composable
-inline fun <reified T1, reified T2, reified T3, reified R : Any> DI.viewModel(
+public inline fun <reified T1, reified T2, reified T3, reified R : Any> DI.viewModel(
     arg1: T1,
     arg2: T2,
     arg3: T3,
     name: String? = null
-): R = viewModel { app.meetacy.di.factory.create<T1, T2, T3, R>(arg1, arg2, arg3, name) }
+): R = viewModel { create<T1, T2, T3, R>(arg1, arg2, arg3, name) }
 
 @Composable
-inline fun <reified T1, reified T2, reified T3, reified T4, reified R : Any> DI.viewModel(
+public inline fun <reified T1, reified T2, reified T3, reified T4, reified R : Any> DI.viewModel(
     arg1: T1,
     arg2: T2,
     arg3: T3,
     arg4: T4,
     name: String? = null
-): R = viewModel { app.meetacy.di.factory.create<T1, T2, T3, T4, R>(arg1, arg2, arg3, arg4, name) }
+): R = viewModel { create<T1, T2, T3, T4, R>(arg1, arg2, arg3, arg4, name) }
 
 @Composable
-inline fun <reified T1, reified T2, reified T3, reified T4, reified T5, reified R : Any> DI.viewModel(
+public inline fun <reified T1, reified T2, reified T3, reified T4, reified T5, reified R : Any> DI.viewModel(
     arg1: T1,
     arg2: T2,
     arg3: T3,
     arg4: T4,
     arg5: T5,
     name: String? = null
-): R = viewModel { app.meetacy.di.factory.create<T1, T2, T3, T4, T5, R>(arg1, arg2, arg3, arg4, arg5, name) }
+): R = viewModel { create<T1, T2, T3, T4, T5, R>(arg1, arg2, arg3, arg4, arg5, name) }
 
 @Composable
-inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T): T {
+public inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T): T {
     return androidx.lifecycle.viewmodel.compose.viewModel<DIViewModel<T>>(key = "${typeOf<T>()}") unused@ {
         val vm = object : DIViewModel<T>() {}
 
@@ -75,8 +75,4 @@ inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T): T {
 @PublishedApi
 internal open class DIViewModel<T : Any> : ViewModel() {
     lateinit var underlying: T
-}
-
-fun DIBuilder.users() {
-    val userViewModel by factory0(fun DI.() = 0)
 }
