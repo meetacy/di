@@ -71,18 +71,32 @@ public class DIBuilder(dependencies: Dependencies) {
         name: String? = null,
         crossinline factory: DI.() -> T
     ) {
-        val key = DependencyKey<T>(
-            type = typeOf<T>(),
-            name = name
-        )
         val provider = DependencyProvider.Singleton { di -> di.factory() }
-        register(key, provider)
+        register<T>(name, provider)
     }
 
     public inline fun <reified T> singleton(
         noinline factory: DI.() -> T
     ): DIBuilderSingletonDelegate<T> {
         return DIBuilderSingletonDelegate(
+            di = this,
+            type = typeOf<T>(),
+            factory = factory
+        )
+    }
+
+    public inline fun <reified T> provider(
+        name: String? = null,
+        crossinline factory: DI.() -> T
+    ) {
+        val provider = DependencyProvider { di -> di.factory() }
+        register<T>(name, provider)
+    }
+
+    public inline fun <reified T> provider(
+        noinline factory: DI.() -> T
+    ): DIBuilderProviderDelegate<T> {
+        return DIBuilderProviderDelegate(
             di = this,
             type = typeOf<T>(),
             factory = factory
