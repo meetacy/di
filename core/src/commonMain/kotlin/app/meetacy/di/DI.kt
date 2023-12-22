@@ -1,8 +1,6 @@
 package app.meetacy.di
 
 import app.meetacy.di.annotation.DIDsl
-import app.meetacy.di.builder.DIBuilder
-import app.meetacy.di.builder.di
 import app.meetacy.di.dependency.*
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf

@@ -46,23 +46,3 @@ public class DIBuilderSingletonDelegate<T>(
         return ReadOnlyProperty { _, _ -> }
     }
 }
-
-public class DIBuilderFactoryDelegate<T>(
-    private val di: DIBuilder,
-    private val type: KType,
-    private val factory: DI.() -> T
-) {
-    public operator fun provideDelegate(
-        thisRef: Any?,
-        property: KProperty<*>
-    ): ReadOnlyProperty<Any?, Unit> {
-        di.register(
-            key = DependencyKey(
-                type = type,
-                name = property.name
-            ),
-            provider = { di -> di.factory() }
-        )
-        return ReadOnlyProperty { _, _ -> }
-    }
-}
