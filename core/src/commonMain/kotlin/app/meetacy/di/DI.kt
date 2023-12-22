@@ -68,7 +68,7 @@ public class DI private constructor(
         trace = DependencyTrace(trace.list + other.trace.list)
     )
 
-    public val getting: InnerDependency = InnerDependency(di = this)
+    public val getting: InnerDependency get() = InnerDependency(di = this)
 
     private fun subDI(key: DependencyKey<*>): DI {
         return DI(
