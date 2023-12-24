@@ -2,7 +2,7 @@ package app.meetacy.di.factory
 
 import app.meetacy.di.DI
 import app.meetacy.di.builder.DIBuilder
-import app.meetacy.di.builder.DIBuilderSingletonDelegate
+import app.meetacy.di.builder.DIBuilderProviderDelegate
 import app.meetacy.di.internal.LazyFactory
 import kotlin.reflect.KProperty
 import kotlin.reflect.KType
@@ -88,13 +88,13 @@ public inline fun <reified T1, reified T2, reified T3, reified T4, reified R> DI
     name: String? = null,
     crossinline factory: DI.(arg1: T1, arg2: T2, arg3: T3, arg4: T4) -> R
 ) {
-    singleton(name) {
+    provider(name) {
         Factory4 { arg1: T1, arg2: T2, arg3: T3, arg4: T4 -> factory(arg1, arg2, arg3, arg4) }
     }
 }
 
-public inline fun <reified T1, reified T2, reified T3, reified T4, reified R> DIBuilder.factory4(
+public inline fun <reified T1, reified T2, reified T3, reified T4, reified R> DIBuilder.factory4provider(
     crossinline factory: DI.(arg1: T1, arg2: T2, arg3: T3, arg4: T4) -> R
-): DIBuilderSingletonDelegate<Factory4<T1, T2, T3, T4, R>> = singleton {
+): DIBuilderProviderDelegate<Factory4<T1, T2, T3, T4, R>> = provider {
     Factory4 { arg1: T1, arg2: T2, arg3: T3, arg4: T4 -> factory(arg1, arg2, arg3, arg4) }
 }
