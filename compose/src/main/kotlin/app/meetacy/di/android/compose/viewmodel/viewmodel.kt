@@ -63,7 +63,7 @@ public inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T
         val vm = object : DIViewModel<T>() {}
 
         val di = this@viewModel + di {
-            val viewModelScope by constant(vm.viewModelScope)
+            val viewModelScope by provider { vm.viewModelScope }
         }
 
         vm.apply {
