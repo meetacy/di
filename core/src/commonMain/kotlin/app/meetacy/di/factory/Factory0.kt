@@ -8,7 +8,7 @@ import kotlin.reflect.KProperty
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
-public fun interface Factory0<R> {
+public fun interface Factory0<out R> {
     public fun create(): R
 }
 

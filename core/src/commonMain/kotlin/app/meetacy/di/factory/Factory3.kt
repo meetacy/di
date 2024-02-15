@@ -8,8 +8,8 @@ import kotlin.reflect.KProperty
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
-public fun interface Factory3<R1, R2, R3, T> {
-    public fun create(arg1: R1, arg2: R2, arg3: R3): T
+public fun interface Factory3<in T1, in T2, in T3, out T> {
+    public fun create(arg1: T1, arg2: T2, arg3: T3): T
 }
 
 // DI Extensions
