@@ -25,6 +25,7 @@ public fun NavigationScreen(
     )
 }
 
+@Composable
 public fun buildNavigationDI(di: DI): DI = di + di {
     val navController by provider { LocalNavController.current }
 }
