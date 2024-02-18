@@ -14,7 +14,7 @@ public val DI.navController: NavController by Dependency
 internal val LocalNavController: ProvidableCompositionLocal<NavController?> = compositionLocalOf { null }
 
 @Composable
-public fun NavigationScreen(
+public fun NavigationDI(
     controller: NavController,
     block: @Composable () -> Unit
 ) {
