@@ -11,10 +11,7 @@ import app.meetacy.di.dependency.Dependency
 public val DI.navController: NavController by Dependency
 
 @PublishedApi
-internal val LocalNavController: ProvidableCompositionLocal<NavController> =
-    compositionLocalOf {
-        error("Please call `buildNavigationDI(...)` only inside `NavigationScreen { ... }`")
-    }
+internal val LocalNavController: ProvidableCompositionLocal<NavController?> = compositionLocalOf { null }
 
 @Composable
 public fun NavigationScreen(
@@ -28,10 +25,12 @@ public fun NavigationScreen(
 }
 
 @Composable
-public fun buildNavigationDI(di: DI): DI {
+public fun buildNavigationDI(base: DI): DI {
     val navController = LocalNavController.current
 
-    return di + di {
-        val navController by constant(navController)
+    return base + di {
+        val navController by provider {
+            navController ?: error("Please call `buildNavigationDI(...)` only inside `NavigationScreen { ... }`")
+        }
     }
 }

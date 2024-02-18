@@ -4,11 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.meetacy.di.DI
-import app.meetacy.di.builder.DIBuilder
+import app.meetacy.di.android.compose.navigation.buildNavigationDI
 import app.meetacy.di.builder.di
 import app.meetacy.di.dependency.Dependency
 import app.meetacy.di.factory.create
-import app.meetacy.di.factory.factory0
 import kotlinx.coroutines.CoroutineScope
 import kotlin.reflect.typeOf
 
@@ -59,10 +58,12 @@ public inline fun <reified T1, reified T2, reified T3, reified T4, reified T5, r
 
 @Composable
 public inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T): T {
+    val navigationDI = buildNavigationDI(base = this)
+
     return androidx.lifecycle.viewmodel.compose.viewModel<DIViewModel<T>>(key = "${typeOf<T>()}") unused@ {
         val vm = object : DIViewModel<T>() {}
 
-        val di = this@viewModel + di {
+        val di = navigationDI + di {
             val viewModelScope by provider { vm.viewModelScope }
         }
 
