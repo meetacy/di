@@ -1,3 +1,5 @@
+@file:Suppress("NAME_SHADOWING")
+
 package app.meetacy.di.android.compose.navigation
 
 import androidx.compose.runtime.*
@@ -26,6 +28,10 @@ public fun NavigationScreen(
 }
 
 @Composable
-public fun buildNavigationDI(di: DI): DI = di + di {
-    val navController by provider { LocalNavController.current }
+public fun buildNavigationDI(di: DI): DI {
+    val navController = LocalNavController.current
+
+    return di + di {
+        val navController by constant(navController)
+    }
 }

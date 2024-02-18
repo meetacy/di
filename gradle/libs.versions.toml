@@ -7,7 +7,7 @@ composeCompiler = "1.5.6"
 androidxNavigation = "2.7.7"
 lifecycle = "2.6.1"
 
-mdi = "0.0.33"
+mdi = "0.0.34"
 
 [libraries]
 
