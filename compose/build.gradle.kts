@@ -18,5 +18,7 @@ android {
 dependencies {
     api(projects.android)
     implementation(libs.composeRuntime)
+    implementation(libs.navigationCompose)
+    implementation(libs.navigationUi)
     implementation(libs.lifecycleComposeViewmodel)
 }
