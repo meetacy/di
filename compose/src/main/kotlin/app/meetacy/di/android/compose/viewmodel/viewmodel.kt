@@ -73,7 +73,6 @@ public inline fun <reified T : Any> DI.viewModel(crossinline factory: DI.() -> T
     }.underlying
 }
 
-@PublishedApi
-internal open class DIViewModel<T : Any> : ViewModel() {
-    lateinit var underlying: T
+public open class DIViewModel<T : Any> : ViewModel() {
+    public lateinit var underlying: T
 }
